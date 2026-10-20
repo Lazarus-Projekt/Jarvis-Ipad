@@ -1,23 +1,25 @@
-# JARVIS – iPad Edition
+# JARVIS 2.0 – iPad Edition
 
-## Was wirklich funktioniert
-- Als eigenständige Website auf iPad ohne PC-Server nutzbar, sobald sie über HTTPS gehostet wird.
-- Futuristische Oberfläche, lokale Aufgaben, Uhrzeit/Datum, Textbefehle, Websuche und systemeigene Sprachausgabe.
-- Mikrofoneingabe nur, wenn Safari/iPadOS die Web Speech Recognition API anbietet und die Berechtigung erteilt wurde. Als Alternative iPad-Tastaturdiktat verwenden.
-- Offline nach erfolgreicher Installation über HTTPS und Service Worker für lokale Funktionen; KI/Websuche brauchen Internet.
-- Optional: selbst betriebener sicherer HTTPS-KI-Server, der POST JSON {"message":"..."} annimmt und {"reply":"..."} zurückgibt. Niemals einen geheimen API-Schlüssel im Browser speichern.
+## Installation über GitHub (ohne PC)
 
-## Auf dem iPad installieren – ohne laufenden PC
-1. ZIP entpacken, die vier Dateien `index.html`, `icon.svg`, `manifest.webmanifest`, `sw.js` auf einen statischen HTTPS-Webhost hochladen (z.B. GitHub Pages, Netlify Drop oder Cloudflare Pages). Auf dem iPad kann das z.B. über Safari und den Dateien-Dialog erfolgen. Die Datei allein in der Dateien-App zu öffnen ist **keine** zuverlässige PWA-Installation.
-2. Die öffentliche HTTPS-Adresse in Safari öffnen.
-3. Teilen > Zum Home-Bildschirm > Hinzufügen.
-4. Das neue JARVIS-Symbol antippen. Für Sprache ggf. Mikrofonberechtigung erlauben.
+1. ZIP auf dem iPad entpacken.
+2. Dein GitHub-Repository `Jarvis-ipad` öffnen.
+3. **Add file → Upload files** auswählen und **alle vier Dateien** `index.html`, `manifest.webmanifest`, `icon.svg`, `sw.js` hochladen. Bestehende Dateien ersetzen (GitHub lässt Upload mit identischen Namen als Änderung zu). `README.md` kann ebenfalls ersetzt werden.
+4. **Commit changes** bestätigen.
+5. Unter **Settings → Pages**: Deploy from a branch, `main`, `/(root)` und Save. Falls Pages bereits aktiv ist, nichts ändern.
+6. Nach der Veröffentlichung in Safari die GitHub-Pages-URL öffnen und **neu laden**. Bei alter Version Safari-Website-Daten löschen oder die Seite mit `?v=2` aufrufen.
+7. Über Teilen → Zum Home-Bildschirm installieren.
 
-## Grenzen
-- Kein permanentes „Hey Jarvis“ im Hintergrund: iPadOS schränkt kontinuierliche Hintergrund-Mikrofonaktivierung für Websites ein. Im Vordergrund den Button „Sprechen“ antippen.
-- Keine exakte Iron-Man-Filmstimme; es wird die auf dem Gerät verfügbare deutsche Systemstimme genutzt.
-- Kein eigenständiges E-Mail-Senden, App-Steuern oder freie PC-Automation. Solche Aktionen erfordern sichere Integrationen und eine serverseitige KI-/Tool-Schicht.
-- Das ZIP kann ich nicht selbst auf deinem iPad installieren oder öffentlich hosten.
+## Sprachfunktionen – wichtige Einschränkung
 
-## Später Raspberry Pi
-Die Oberfläche ist statisch und lässt sich auf dem Pi mit nginx oder einem anderen Webserver hosten. Für KI-Funktionen und Sprachhardware wird zusätzlich ein Backend benötigt.
+- Die Schaltfläche **Stimme testen** aktiviert die lokale iPad-Sprachausgabe. Wähle in den Einstellungen eine verfügbare deutsche Stimme. Keine originalgetreue Iron-Man-Filmstimme enthalten.
+- **Sprechen** nutzt die Browser-API SpeechRecognition, **nur wenn iPadOS/Safari diese bereitstellt**. Diese API kann auf iPads fehlen. **Audio prüfen** zeigt getrennt Mikrofonberechtigung, Browser-Spracherkennung und Sprachausgabe an.
+- Verlässliche Alternative ohne zusätzliche Server: das Texteingabefeld antippen und **Diktat (Mikrofon) auf der iPad-Tastatur** nutzen.
+- Keine dauerhafte „Hey Jarvis“-Hintergrundaktivierung auf iPadOS.
+- Für zuverlässige Audio-Transkription über eine KI ist ein separater sicherer Backend-Dienst erforderlich. GitHub Pages hostet nur statische Dateien.
+
+## Was funktioniert
+
+Aufgaben lokal speichern und abhaken, Uhrzeit/Datum, Websuche, animierte Oberfläche, Systemstatus, einstellbare lokale Sprachausgabe und optionaler HTTPS-KI-Endpunkt (POST `{"message":"..."}`, Antwort `{"reply":"..."}`). **Niemals einen geheimen API-Schlüssel in GitHub Pages oder die Browser-Einstellungen eintragen.**
+
+Dies ist eine verbesserte Version des lokalen Prototyps, keine vollständige autonome KI oder native iPad-App. Externe Aktionen brauchen sichere Berechtigungen und weitere Integrationen.

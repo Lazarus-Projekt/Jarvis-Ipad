@@ -1,1 +1,1 @@
-{"name":"JARVIS iPad Assistant","short_name":"JARVIS","start_url":"./","scope":"./","display":"standalone","background_color":"#020813","theme_color":"#030b17","lang":"de","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{"name":"JARVIS 2.0 – iPad Assistant","short_name":"JARVIS","start_url":"./","display":"standalone","background_color":"#020813","theme_color":"#030b17","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
